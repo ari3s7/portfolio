@@ -1,0 +1,110 @@
+.world-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.world-fiber,
+.world-stain,
+.world-scratch,
+.world-halftone {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.world-fiber {
+  opacity: 0.42;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 6px,
+      rgb(90 70 48 / 0.16) 6px 7px,
+      transparent 7px 13px,
+      rgb(8 7 6 / 0.22) 13px 14px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 21px,
+      rgb(58 48 38 / 0.12) 21px 22px
+    );
+}
+
+.world-stain {
+  opacity: 0.38;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(ellipse 34% 22% at 12% 18%, rgb(72 52 32 / 0.55), transparent 70%),
+    radial-gradient(ellipse 28% 20% at 88% 12%, rgb(28 20 14 / 0.5), transparent 68%),
+    radial-gradient(ellipse 30% 24% at 92% 88%, rgb(58 40 24 / 0.42), transparent 72%),
+    radial-gradient(ellipse 26% 20% at 8% 84%, rgb(20 14 10 / 0.48), transparent 70%),
+    radial-gradient(circle at 36% 58%, rgb(90 70 48 / 0.18) 0 1.4rem, transparent 4rem),
+    radial-gradient(circle at 64% 32%, rgb(8 7 6 / 0.28) 0 1rem, transparent 3.2rem);
+}
+
+.world-scratch {
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image:
+    linear-gradient(108deg, transparent 18%, rgb(210 190 150 / 0.12) 18.12% 18.28%, transparent 18.5%),
+    linear-gradient(74deg, transparent 62%, rgb(8 7 6 / 0.45) 62.08% 62.22%, transparent 62.48%),
+    linear-gradient(16deg, transparent 41%, rgb(210 190 150 / 0.08) 41.1% 41.22%, transparent 41.45%),
+    linear-gradient(-18deg, transparent 77%, rgb(8 7 6 / 0.4) 77.1% 77.26%, transparent 77.48%);
+}
+
+.world-halftone {
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: radial-gradient(circle, rgb(210 190 150 / 0.55) 0.45px, transparent 0.75px);
+  background-size: 5px 5px;
+}
+
+html[data-performance-tier='light'] .world-stain,
+html[data-performance-tier='light'] .world-scratch {
+  opacity: 0.16;
+}
+
+html[data-performance-tier='light'] .world-detail {
+  display: none;
+}
+
+html[data-performance-tier='light'] .world-halftone {
+  opacity: 0.03;
+}
+
+.ink-heading {
+  color: var(--color-paper);
+}
+
+.noir-continuation,
+.newspaper-scene,
+.smoke-chamber,
+.skills-scene,
+.watch-scene,
+.finale-scene {
+  background-color: transparent;
+}
+
+.skills-hatch,
+.watch-hatch,
+.finale-hatch {
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 8px,
+      rgb(90 70 48 / 0.14) 8px 9px
+    );
+}
+
+.watch-vignette,
+.finale-vignette {
+  box-shadow: inset 0 0 8rem 2.2rem rgb(6 5 4 / 0.42);
+  mix-blend-mode: multiply;
+}
