@@ -1,0 +1,244 @@
+.watch-scene {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  min-height: 100svh;
+  padding: 3.8rem 0.85rem 4.4rem;
+  background: transparent;
+  scroll-margin-top: 0.5rem;
+}
+
+.watch-hatch,
+.watch-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.watch-hatch {
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background:
+    repeating-linear-gradient(
+      -26deg,
+      transparent 0 12px,
+      rgb(12 10 8 / 0.16) 12px 13px
+    ),
+    repeating-linear-gradient(
+      62deg,
+      transparent 0 16px,
+      rgb(12 10 8 / 0.08) 16px 17px
+    ),
+    radial-gradient(circle, rgb(12 10 8 / 0.5) 0.45px, transparent 0.7px);
+  background-size: auto, auto, 5px 5px;
+}
+
+.watch-vignette {
+  box-shadow: inset 0 0 8rem 1.6rem rgb(11 10 9 / 0.42);
+}
+
+.watch-well {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.watch-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.watch-kicker {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+}
+
+.watch-heading {
+  margin: 0;
+  color: var(--color-paper);
+  font-size: clamp(1.8rem, 6.4vw, 3.2rem);
+  line-height: 1.06;
+}
+
+.watch-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.watch-stage {
+  width: min(100%, 18.5rem);
+  overflow: visible;
+}
+
+.pocket-watch {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.watch-numeral,
+.watch-mark-year {
+  font-family: var(--font-label);
+}
+
+.watch-log {
+  width: min(100%, 28rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.watch-entry {
+  position: relative;
+  padding: 0.95rem 1rem 1rem;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at 14% 12%, rgb(242 230 206 / 0.45), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 16px,
+      rgb(90 70 48 / 0.06) 16px 17px
+    ),
+    linear-gradient(180deg, #e8d8bc 0%, #d2c09a 100%);
+  outline: 1px solid rgb(12 10 8 / 0.7);
+  outline-offset: -5px;
+}
+
+.watch-entry::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: radial-gradient(circle, rgb(12 10 8 / 0.7) 0.5px, transparent 0.7px);
+  background-size: 4px 4px;
+}
+
+.watch-entry-year {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.watch-entry-kind {
+  margin: 0.2rem 0 0.45rem;
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3a3228;
+}
+
+.watch-entry-title {
+  margin: 0 0 0.4rem;
+  color: var(--color-ink);
+  font-size: clamp(1.05rem, 3.6vw, 1.4rem);
+  line-height: 1.05;
+  overflow-wrap: break-word;
+}
+
+.watch-entry-summary {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.watch-entry.is-marked {
+  box-shadow: 3px 3px 0 rgb(12 10 8 / 0.22);
+}
+
+.watch-scene.is-light .watch-hatch {
+  opacity: 0.08;
+}
+
+@media (min-width: 768px) {
+  .watch-scene {
+    padding: 4.6rem 1.4rem 5rem;
+  }
+
+  .watch-stage {
+    width: min(100%, 22rem);
+  }
+
+  .watch-log {
+    width: min(100%, 32rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .watch-scene {
+    padding: 5rem 2rem 5.6rem;
+  }
+
+  .watch-well {
+    width: min(100%, 74rem);
+  }
+
+  .watch-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .watch-stage {
+    width: min(100%, 26rem);
+    justify-self: end;
+  }
+
+  .watch-log {
+    width: min(100%, 28rem);
+    justify-self: start;
+  }
+}
+
+@media (min-width: 1440px) {
+  .watch-well {
+    width: min(100%, 76rem);
+  }
+
+  .watch-stage {
+    width: min(100%, 28rem);
+  }
+}
+
+@media (max-width: 374px) {
+  .watch-scene {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .watch-stage {
+    width: min(100%, 16.5rem);
+  }
+}
+
+html[data-reduced-motion='true'] .watch-entry {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watch-entry {
+    opacity: 1;
+    transform: none;
+  }
+}
