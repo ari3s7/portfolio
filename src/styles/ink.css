@@ -1,0 +1,77 @@
+.hero-print {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hero-paper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 9px,
+      rgb(90 70 48 / 0.14) 9px 10px
+    ),
+    radial-gradient(circle at 18% 22%, rgb(90 70 48 / 0.16), transparent 42%),
+    radial-gradient(circle at 82% 78%, rgb(12 10 8 / 0.2), transparent 46%);
+}
+
+.hero-halftone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: radial-gradient(circle, rgb(210 190 150 / 0.55) 0.55px, transparent 0.8px);
+  background-size: 5px 5px;
+}
+
+.cap-sketch,
+.cap-hatch,
+.cap-fill,
+.cap-detail {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.blade-motion {
+  position: absolute;
+  top: 4%;
+  left: -10%;
+  z-index: 0;
+  width: 28%;
+  height: 88%;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgb(12 10 8 / 0.28), transparent 62%),
+    linear-gradient(108deg, transparent 40%, rgb(12 10 8 / 0.45) 41% 42%, transparent 44%),
+    linear-gradient(98deg, transparent 48%, rgb(12 10 8 / 0.32) 49% 50%, transparent 52%);
+}
+
+.razor-blade-shadow {
+  position: absolute;
+  right: 8%;
+  bottom: 10%;
+  left: 8%;
+  z-index: 0;
+  height: 32%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(
+      -28deg,
+      rgb(12 10 8 / 0.5) 0 1px,
+      transparent 1px 4px
+    );
+  transform: scaleY(0.32);
+  transform-origin: 50% 100%;
+  clip-path: ellipse(48% 70% at 50% 50%);
+}

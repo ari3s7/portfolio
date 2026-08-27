@@ -1,0 +1,736 @@
+.hero-scene {
+  --px: 0;
+  --py: 0;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  overflow-x: clip;
+  place-items: center;
+  z-index: 1;
+  background: transparent;
+}
+
+.hero-layer,
+.hero-copy-slot,
+.hero-print,
+.hero-mast,
+.hero-lamp,
+.atmosphere-fog,
+.atmosphere-dust,
+.hero-blackout {
+  pointer-events: none;
+}
+
+.hero-bg,
+.hero-room,
+.parallax-table,
+.atmosphere-fog,
+.atmosphere-dust {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg,
+.hero-room {
+  opacity: 0;
+}
+
+.hero-bg {
+  z-index: 0;
+  mix-blend-mode: overlay;
+  background:
+    radial-gradient(ellipse 58% 48% at 50% 36%, rgb(58 46 34 / 0.14), transparent 72%),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 8px,
+      rgb(90 70 48 / 0.08) 8px 9px
+    );
+}
+
+.hero-room {
+  z-index: 1;
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 10px,
+      rgb(12 10 8 / 0.12) 10px 11px
+    );
+  box-shadow: inset 0 0 12rem 4rem rgb(6 5 4 / 0.45);
+}
+
+.parallax-table {
+  z-index: 2;
+}
+
+.hero-table-reveal {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-table {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 165%;
+  height: 78%;
+  transform: translateX(-50%) perspective(980px) rotateX(62deg);
+  transform-origin: center top;
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 7px,
+      rgb(12 10 8 / 0.38) 7px 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 11px,
+      rgb(12 10 8 / 0.16) 11px 12px
+    ),
+    rgb(28 22 16 / 0.35);
+  box-shadow: 0 -1.2rem 2rem rgb(12 10 8 / 0.18);
+}
+
+.hero-table-sheen {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  width: 42%;
+  height: 18%;
+  translate: -50% 0;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  background: radial-gradient(
+    ellipse at center,
+    rgb(90 70 48 / 0.08),
+    transparent 68%
+  );
+}
+
+.atmosphere-fog {
+  z-index: 3;
+  overflow: hidden;
+}
+
+.atmosphere-fog-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.atmosphere-fog-layer {
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.atmosphere-fog-layer-a {
+  animation: fog-drift 26s ease-in-out infinite alternate;
+}
+
+.atmosphere-fog-layer-b {
+  opacity: 0.22;
+  animation: fog-drift 30s ease-in-out infinite alternate-reverse;
+}
+
+.atmosphere-fog-layer-c {
+  opacity: 0.16;
+  animation: fog-drift 34s ease-in-out infinite alternate;
+}
+
+.parallax-light {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.hero-spotlight,
+.atmosphere-spotlight {
+  position: absolute;
+  inset: 0;
+}
+
+.atmosphere-spotlight-falloff {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  background: radial-gradient(
+    ellipse 52% 46% at 50% 38%,
+    transparent 0%,
+    rgb(40 28 18 / 0.12) 50%,
+    rgb(22 14 10 / 0.42) 100%
+  );
+}
+
+.atmosphere-spotlight-beam {
+  position: absolute;
+  left: 50%;
+  top: -8%;
+  width: min(48vw, 24rem);
+  height: 58%;
+  translate: -50% 0;
+  clip-path: polygon(36% 0, 64% 0, 84% 100%, 16% 100%);
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 7px,
+      rgb(12 10 8 / 0.03) 7px 8px
+    ),
+    rgb(232 216 184 / 0.08);
+}
+
+.atmosphere-spotlight-core {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: min(32vw, 14rem);
+  height: 36%;
+  translate: -50% 0;
+  mix-blend-mode: multiply;
+  background: radial-gradient(
+    ellipse 50% 70% at 50% 0%,
+    rgb(232 216 184 / 0.1),
+    transparent 70%
+  );
+}
+
+.atmosphere-spotlight-pool {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: min(58vw, 26rem);
+  height: min(24vw, 11rem);
+  translate: -50% 0;
+  mix-blend-mode: multiply;
+  background: radial-gradient(
+    ellipse at center,
+    rgb(232 216 184 / 0.06),
+    transparent 72%
+  );
+  animation: light-breathe 7s ease-in-out infinite;
+}
+
+.hero-lamp {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 5;
+  width: min(22vw, 7.4rem);
+  translate: -50% 0;
+  opacity: 0;
+}
+
+.hero-lamp-mark {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.hero-mast {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  left: 1.1rem;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  opacity: 0;
+}
+
+.hero-name,
+.hero-role {
+  margin: 0;
+  max-width: 46%;
+  font-family: var(--font-label);
+  font-size: clamp(0.58rem, 2.1vw, 0.72rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: linear-gradient(var(--color-paper), var(--color-paper)) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 0.28rem;
+}
+
+.hero-role {
+  text-align: right;
+}
+
+.hero-stage {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  width: min(100%, 72rem);
+  max-width: 100%;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 11vh 1.15rem 7vh;
+  gap: 0.4rem;
+}
+
+.hero-cap-slot {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  width: 100%;
+  overflow: visible;
+  place-items: center;
+}
+
+.cap-idle {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  animation: cap-idle 6.4s ease-in-out infinite;
+  transform-origin: 50% 82%;
+}
+
+.hero-scene.is-entered .cap-idle {
+  animation: none;
+}
+
+.hero-scene.is-entered .cap-trigger {
+  pointer-events: none;
+}
+
+.hero-scene.is-entered .hero-copy {
+  opacity: 0;
+}
+
+@media (max-width: 767px) {
+  html[data-blades-revealed='true'] .hero-copy-slot {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+.cap-trigger {
+  position: relative;
+  display: block;
+  width: min(92vw, 28rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: 50% 78%;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.cap-trigger:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 10px;
+  border-radius: 46% / 30%;
+  box-shadow: 0 0 0 5px rgb(12 10 8 / 0.92);
+}
+
+.flat-cap {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+}
+
+.cap-ambient-shadow,
+.cap-contact-shadow,
+.cap-brim-shadow {
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.cap-ambient-shadow {
+  bottom: 8%;
+  z-index: 0;
+  width: 78%;
+  height: 16%;
+  translate: -50% 0;
+  background: repeating-linear-gradient(
+    -24deg,
+    rgb(12 10 8 / 0.42) 0 1px,
+    transparent 1px 4px
+  );
+  transform: scaleY(0.42);
+}
+
+.cap-contact-shadow {
+  bottom: 11%;
+  z-index: 1;
+  width: 48%;
+  height: 8%;
+  translate: -50% 0;
+  background: rgb(12 10 8 / 0.38);
+  transform: scaleY(0.38);
+}
+
+.cap-brim-shadow {
+  bottom: 16%;
+  z-index: 1;
+  width: 34%;
+  height: 5%;
+  translate: -50% 4%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(12 10 8 / 0.45) 0 2px,
+    transparent 2px 5px
+  );
+  transform: scaleY(0.45);
+}
+
+.atmosphere-dust {
+  z-index: 6;
+}
+
+.atmosphere-dust-speck {
+  position: absolute;
+  background: rgb(230 217 196 / 0.28);
+  animation-name: dust-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.hero-copy-slot {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.hero-copy {
+  display: flex;
+  width: min(100%, 28rem);
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.38rem;
+  text-align: center;
+}
+
+.hero-kicker {
+  font-family: var(--font-label);
+  font-size: clamp(0.58rem, 2.2vw, 0.68rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+}
+
+.hero-enter {
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(1.55rem, 7.4vw, 2.55rem);
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.hero-hint {
+  font-family: var(--font-label);
+  font-size: clamp(0.62rem, 2.4vw, 0.72rem);
+  letter-spacing: 0.2em;
+  color: var(--color-brass);
+}
+
+.hero-enter,
+.hero-hint,
+.hero-kicker {
+  opacity: 0;
+}
+
+.hero-blackout {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  background: #050403;
+}
+
+.parallax-bg {
+  transform: translate3d(calc(var(--px) * -4px), calc(var(--py) * -3px), 0);
+}
+
+.parallax-room {
+  transform: translate3d(calc(var(--px) * -3px), calc(var(--py) * -2px), 0);
+}
+
+.parallax-table {
+  transform: translate3d(calc(var(--px) * 1px), calc(var(--py) * 0.5px), 0);
+}
+
+.parallax-cap {
+  transform: translate3d(calc(var(--px) * 8px), calc(var(--py) * 5px), 0);
+}
+
+.parallax-light {
+  transform: translate3d(calc(var(--px) * 12px), calc(var(--py) * 8px), 0);
+}
+
+.parallax-copy {
+  transform: translate3d(calc(var(--px) * 3px), calc(var(--py) * 2px), 0);
+}
+
+.hero-scene.is-entered .atmosphere-spotlight-core {
+  opacity: 1;
+}
+
+.hero-scene.is-entered .hero-hint {
+  opacity: 0.42;
+}
+
+.hero-table-reveal,
+.hero-spotlight,
+.hero-cap-reveal {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-stage {
+    justify-content: center;
+    padding-top: 8vh;
+    padding-bottom: 6vh;
+  }
+
+  .cap-trigger {
+    width: min(72vw, 34rem);
+  }
+
+  .hero-enter {
+    font-size: clamp(2rem, 5.2vw, 3.1rem);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-lamp {
+    width: min(16vw, 8.2rem);
+  }
+
+  .hero-mast {
+    top: 1.4rem;
+    right: 1.8rem;
+    left: 1.8rem;
+  }
+
+  .hero-copy {
+    width: min(100%, 36rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cap-trigger {
+    width: min(64vw, 38rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cap-trigger {
+    width: min(54vw, 40rem);
+  }
+
+  .hero-table {
+    top: 50%;
+    height: 80%;
+  }
+
+  .hero-enter {
+    font-size: clamp(2.35rem, 3.4vw, 3.4rem);
+  }
+
+  .atmosphere-spotlight-beam {
+    width: min(36vw, 26rem);
+  }
+
+  .hero-stage {
+    padding-top: 7vh;
+    padding-bottom: 5vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-stage {
+    padding-top: 12vh;
+    padding-bottom: 5vh;
+    justify-content: flex-start;
+  }
+
+  .hero-lamp {
+    width: min(28vw, 6.2rem);
+  }
+
+  .hero-name,
+  .hero-role {
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-table {
+    top: 52%;
+    width: 200%;
+    height: 68%;
+    transform: translateX(-50%) perspective(640px) rotateX(67deg);
+  }
+
+  .atmosphere-spotlight-beam {
+    width: 70vw;
+    height: 52%;
+  }
+}
+
+@keyframes fog-drift {
+  from {
+    transform: translate3d(-1.5%, 1.5%, 0);
+  }
+
+  to {
+    transform: translate3d(2%, -2%, 0);
+  }
+}
+
+@keyframes dust-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  12% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(10px, -80px, 0);
+  }
+}
+
+@keyframes cap-idle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -1.5px, 0);
+  }
+}
+
+@keyframes light-breathe {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+html[data-reduced-motion='true'] .hero-bg,
+html[data-reduced-motion='true'] .hero-room,
+html[data-reduced-motion='true'] .hero-print,
+html[data-reduced-motion='true'] .hero-table-reveal,
+html[data-reduced-motion='true'] .hero-spotlight,
+html[data-reduced-motion='true'] .hero-cap-reveal,
+html[data-reduced-motion='true'] .cap-sketch,
+html[data-reduced-motion='true'] .cap-hatch,
+html[data-reduced-motion='true'] .cap-fill,
+html[data-reduced-motion='true'] .cap-detail,
+html[data-reduced-motion='true'] .hero-enter,
+html[data-reduced-motion='true'] .hero-hint,
+html[data-reduced-motion='true'] .hero-kicker,
+html[data-reduced-motion='true'] .hero-mast,
+html[data-reduced-motion='true'] .hero-lamp {
+  opacity: 1;
+}
+
+html[data-reduced-motion='true'] .cap-outline path {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+
+html[data-reduced-motion='true'] .hero-blackout {
+  opacity: 0;
+}
+
+html[data-reduced-motion='true'] .atmosphere-fog-layer,
+html[data-reduced-motion='true'] .atmosphere-dust-speck,
+html[data-reduced-motion='true'] .cap-idle,
+html[data-reduced-motion='true'] .atmosphere-spotlight-pool {
+  animation: none;
+}
+
+html[data-reduced-motion='true'] .parallax-bg,
+html[data-reduced-motion='true'] .parallax-room,
+html[data-reduced-motion='true'] .parallax-table,
+html[data-reduced-motion='true'] .parallax-cap,
+html[data-reduced-motion='true'] .parallax-light,
+html[data-reduced-motion='true'] .parallax-copy,
+html[data-pointer-mode='coarse'] .parallax-bg,
+html[data-pointer-mode='coarse'] .parallax-room,
+html[data-pointer-mode='coarse'] .parallax-table,
+html[data-pointer-mode='coarse'] .parallax-cap,
+html[data-pointer-mode='coarse'] .parallax-light,
+html[data-pointer-mode='coarse'] .parallax-copy {
+  transform: none;
+}
+
+html[data-performance-tier='light'] .atmosphere-fog-layer-c {
+  display: none;
+}
+
+html[data-performance-tier='light'] .atmosphere-spotlight-pool {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-room,
+  .hero-print,
+  .hero-table-reveal,
+  .hero-spotlight,
+  .hero-cap-reveal,
+  .cap-sketch,
+  .cap-hatch,
+  .cap-fill,
+  .cap-detail,
+  .hero-enter,
+  .hero-hint,
+  .hero-kicker,
+  .hero-mast,
+  .hero-lamp {
+    opacity: 1;
+  }
+
+  .hero-blackout {
+    opacity: 0;
+  }
+
+  .atmosphere-fog-layer,
+  .atmosphere-dust-speck,
+  .cap-idle,
+  .atmosphere-spotlight-pool {
+    animation: none;
+  }
+
+  .parallax-bg,
+  .parallax-room,
+  .parallax-table,
+  .parallax-cap,
+  .parallax-light,
+  .parallax-copy {
+    transform: none;
+  }
+}
