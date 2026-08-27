@@ -289,13 +289,14 @@ html[data-pointer-mode='fine'] .skill-card:not(.is-selected):hover .skill-card-p
   gap: 0.12rem;
   max-height: 46%;
   overflow: hidden;
+  color: #3a3228;
   font-family: var(--font-label);
-  font-size: 0.52rem;
+  font-weight: 500;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   line-height: 1.25;
   text-align: center;
   text-transform: uppercase;
-  color: #3a3228;
 }
 
 .skill-card.is-selected .skill-card-items {
