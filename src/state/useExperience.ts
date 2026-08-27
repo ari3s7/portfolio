@@ -1,0 +1,13 @@
+import { useContext } from 'react'
+import {
+  ExperienceContext,
+  type ExperienceContextValue,
+} from '@/state/experience-context'
+
+export function useExperience(): ExperienceContextValue {
+  const context = useContext(ExperienceContext)
+  if (!context) {
+    throw new Error('useExperience must be used within ExperienceProvider')
+  }
+  return context
+}
