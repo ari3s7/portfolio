@@ -1,0 +1,15 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+let registered = false
+
+export function registerGsapPlugins(): void {
+  if (registered || typeof window === 'undefined') return
+  gsap.registerPlugin(ScrollTrigger)
+  ScrollTrigger.config({ ignoreMobileResize: true })
+  registered = true
+}
+
+registerGsapPlugins()
+
+export { gsap, ScrollTrigger }
