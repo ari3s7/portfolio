@@ -1,8 +1,11 @@
+export type EducationKind = 'education' | 'beginnings'
+
 export type EducationItem = {
   id: string
   institution: string
   credential: string
   years: string
+  kind?: EducationKind
 }
 
 export const education: EducationItem[] = [
@@ -13,14 +16,22 @@ export const education: EducationItem[] = [
     years: '2023–2027',
   },
   {
+    id: 'coding-start',
+    institution:
+      'Began programming and web development, building my first projects and a passion for creating with code.',
+    credential: 'Started Coding & Web Development',
+    years: '2022',
+    kind: 'beginnings',
+  },
+  {
     id: 'reliance-xii',
-    institution: 'Reliance Academy, Gorakhpur, UP',
+    institution: '',
     credential: 'Senior Secondary (XII)',
     years: '2021',
   },
   {
     id: 'basil-x',
-    institution: "St. Basil's School, Basti, UP",
+    institution: '',
     credential: 'Secondary (X)',
     years: '2019',
   },

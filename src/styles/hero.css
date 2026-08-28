@@ -250,7 +250,7 @@
 .hero-role {
   margin: 0;
   max-width: 46%;
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: clamp(0.58rem, 2.1vw, 0.72rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -426,7 +426,7 @@
 }
 
 .hero-kicker {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: clamp(0.58rem, 2.2vw, 0.68rem);
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -436,6 +436,7 @@
 .hero-enter {
   width: 100%;
   max-width: 100%;
+  font-family: var(--font-display);
   font-size: clamp(1.55rem, 7.4vw, 2.55rem);
   line-height: 1.02;
   letter-spacing: 0.07em;
@@ -443,7 +444,7 @@
 }
 
 .hero-hint {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: clamp(0.62rem, 2.4vw, 0.72rem);
   letter-spacing: 0.2em;
   color: var(--color-brass);

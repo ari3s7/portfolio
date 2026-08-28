@@ -426,7 +426,7 @@ export function MatchScene() {
       <div className="match-well">
         <header className="match-copy match-reveal">
           <p className="match-kicker">{copy.match.kicker}</p>
-          <h2 id="match-heading" className="match-instruction letterpress">
+          <h2 id="match-heading" className="match-instruction">
             {copy.match.instruction}
           </h2>
         </header>

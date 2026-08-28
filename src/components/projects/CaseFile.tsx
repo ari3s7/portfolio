@@ -87,7 +87,7 @@ export function CaseFile({
           <p className="case-file-kicker">
             {copy.projects.fileLabel} {project.number}
           </p>
-          <h3 id={titleId} className="case-file-title letterpress">
+          <h3 id={titleId} className="case-file-title">
             {project.title}
           </h3>
         </header>

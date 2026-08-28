@@ -179,7 +179,7 @@
 }
 
 .newspaper-edition {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.62rem;
   letter-spacing: 0.28em;
   color: var(--color-accent);
@@ -189,6 +189,7 @@
   width: 100%;
   max-width: 100%;
   color: var(--color-ink);
+  font-family: var(--font-display);
   font-size: clamp(1.55rem, 8vw, 4.35rem);
   line-height: 1.02;
   letter-spacing: 0.04em;
@@ -209,7 +210,7 @@
   padding: 0.35rem 0 0.15rem;
   border-top: 1px solid rgb(12 10 8 / 0.55);
   border-bottom: 3px double rgb(12 10 8 / 0.7);
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -239,7 +240,7 @@
 }
 
 .newspaper-kicker {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   color: var(--color-accent);
@@ -248,13 +249,14 @@
 .newspaper-headline {
   margin: 0.28rem 0 0.45rem;
   color: var(--color-ink);
+  font-family: var(--font-display);
   font-size: clamp(1.45rem, 6.4vw, 3.15rem);
   line-height: 1.06;
   overflow-wrap: anywhere;
 }
 
 .newspaper-byline {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: clamp(0.72rem, 2.6vw, 0.84rem);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -281,6 +283,7 @@
 .newspaper-col-title {
   margin: 0 0 0.4rem;
   color: var(--color-ink);
+  font-family: var(--font-body);
   font-size: clamp(0.92rem, 3.4vw, 1.12rem);
   letter-spacing: 0.12em;
   border-bottom: 1px solid rgb(12 10 8 / 0.45);
@@ -290,7 +293,7 @@
 .newspaper-col p,
 .newspaper-statement-body,
 .newspaper-list {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 1.02rem;
   line-height: 1.58;
   color: #161310;
@@ -327,7 +330,7 @@
 
 .newspaper-figure figcaption {
   margin-top: 0.4rem;
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -352,7 +355,7 @@
 
 .newspaper-statement-label {
   margin-bottom: 0.35rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: normal;
   font-size: clamp(0.95rem, 3.2vw, 1.2rem);
   letter-spacing: 0.08em;
@@ -369,7 +372,7 @@
   margin-top: 0.95rem;
   padding-top: 0.7rem;
   border-top: 1px solid rgb(12 10 8 / 0.5);
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.64rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -389,7 +392,7 @@
   border-bottom: 1px solid rgb(12 10 8 / 0.7);
   background: transparent;
   color: var(--color-ink);
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;

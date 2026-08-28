@@ -56,7 +56,7 @@
 }
 
 .watch-kicker {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   letter-spacing: 0.32em;
   color: var(--color-accent);
@@ -65,6 +65,7 @@
 .watch-heading {
   margin: 0;
   color: var(--color-cream);
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 6.4vw, 3.2rem);
   line-height: 1.02;
   letter-spacing: 0.06em;
@@ -113,7 +114,7 @@
 
 .watch-hint {
   margin: 0.65rem 0 0;
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -131,7 +132,7 @@
 
 .watch-numeral,
 .watch-mark-year {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
 }
 
 .watch-log {
@@ -185,7 +186,7 @@
 }
 
 .watch-entry-year {
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -194,7 +195,7 @@
 
 .watch-entry-kind {
   margin: 0.2rem 0 0.45rem;
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -204,6 +205,7 @@
 .watch-entry-title {
   margin: 0 0 0.4rem;
   color: var(--color-ink);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 3.6vw, 1.4rem);
   line-height: 1.05;
   letter-spacing: 0.04em;
@@ -212,7 +214,7 @@
 
 .watch-entry-summary {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 1.02rem;
   line-height: 1.5;
   overflow-wrap: break-word;
@@ -225,7 +227,7 @@
 .watch-status {
   min-height: 1.4rem;
   margin: 1rem 0 0;
-  font-family: var(--font-label);
+  font-family: var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;

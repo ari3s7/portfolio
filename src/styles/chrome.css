@@ -6,7 +6,7 @@
   padding: 0.55rem 0.8rem;
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -82,7 +82,7 @@
   border: 0;
   background: transparent;
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -135,7 +135,7 @@
   border: 1px solid rgb(12 10 8 / 0.7);
   background: #d4c4a4;
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.16em;

@@ -92,7 +92,9 @@ export function Experience() {
                     <p className="watch-entry-year">{item.year}</p>
                     <p className="watch-entry-kind">{copy.experience.kinds[item.kind]}</p>
                     <h3 className="watch-entry-title">{item.title}</h3>
-                    <p className="watch-entry-summary">{item.summary}</p>
+                    {item.summary.trim() ? (
+                      <p className="watch-entry-summary">{item.summary}</p>
+                    ) : null}
                   </article>
                 </li>
               ))}

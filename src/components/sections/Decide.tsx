@@ -1,4 +1,4 @@
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { useEffect, useRef, type CSSProperties, type KeyboardEvent } from 'react'
 import { VintageCoinFace } from '@/components/objects/VintageCoin'
 import { copy } from '@/data'
 import { useCoinToss } from '@/hooks/useCoinToss'
@@ -82,6 +82,15 @@ export function Decide() {
             <span ref={shadowRef} className="decide-shadow" aria-hidden="true" />
             <span ref={liftRef} className="decide-lift">
               <span ref={coinRef} className="decide-coin">
+                <span className="decide-coin-edge" aria-hidden="true">
+                  {Array.from({ length: 10 }, (_, index) => (
+                    <span
+                      key={index}
+                      className="decide-coin-edge-slice"
+                      style={{ '--slice': index } as CSSProperties}
+                    />
+                  ))}
+                </span>
                 <span className="decide-face decide-face-heads">
                   <VintageCoinFace face="heads" />
                 </span>
@@ -96,7 +105,7 @@ export function Decide() {
         <div id="decide-status" className="decide-result" aria-live="polite">
           {tossed ? (
             <>
-              <p className="decide-result-lead letterpress">{copy.decide.result}</p>
+              <p className="decide-result-lead">{copy.decide.result}</p>
               <p className="decide-result-aside">{copy.decide.aside}</p>
             </>
           ) : tossing ? (

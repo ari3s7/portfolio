@@ -1,163 +1,283 @@
 import { useId } from 'react'
 
-export function WhiskeyGlass() {
-  const id = useId().replace(/:/g, '')
+function svgId(raw: string) {
+  return raw.replace(/:/g, '')
+}
+
+function IceChunk({
+  id,
+  variant,
+}: {
+  id: string
+  variant: 'a' | 'b'
+}) {
+  const compact = variant === 'b'
+
+  return (
+    <g className={`deal-ice deal-ice-${variant}`}>
+      <g transform={compact ? 'translate(178 122) rotate(18) scale(0.9)' : 'translate(102 96) rotate(-12)'}>
+        <path
+          d="M10 22L46 10C50 9 56 12 60 16L78 28L42 42L10 22Z"
+          fill={`url(#${id}-ice-top)`}
+        />
+        <path
+          d="M10 22L8 50C9 60 18 68 42 72L42 42L10 22Z"
+          fill={`url(#${id}-ice-side)`}
+        />
+        <path
+          d="M78 28L80 54C78 64 60 70 42 72L42 42L78 28Z"
+          fill={`url(#${id}-ice-shade)`}
+        />
+        <path
+          d="M20 26L50 16"
+          stroke="#fffaf0"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity="0.5"
+        />
+        <path
+          d="M24 38L38 58M52 32L50 60"
+          stroke="#f4ead4"
+          strokeWidth="0.75"
+          opacity="0.3"
+        />
+        <path
+          d="M16 46C24 56 34 64 42 68"
+          stroke="#6a3010"
+          strokeWidth="0.85"
+          opacity="0.22"
+        />
+        <ellipse cx="32" cy="22" rx="8" ry="3" fill="#fff8ec" opacity="0.32" />
+      </g>
+    </g>
+  )
+}
+
+function GlassArt() {
+  const id = svgId(useId())
 
   return (
     <svg
       className="deal-glass-art"
-      viewBox="0 0 280 360"
+      viewBox="0 0 360 320"
       fill="none"
       aria-hidden="true"
       focusable="false"
     >
       <defs>
-        <pattern
-          id={`${id}-hatch`}
-          width="6"
-          height="6"
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(-22)"
-        >
-          <path d="M0 1H6" stroke="#0c0b09" strokeWidth="0.4" opacity="0.32" />
-        </pattern>
-        <pattern id={`${id}-stipple`} width="5" height="5" patternUnits="userSpaceOnUse">
-          <circle cx="1.1" cy="1.3" r="0.32" fill="#0c0b09" />
-          <circle cx="3.4" cy="3.2" r="0.22" fill="#0c0b09" />
-        </pattern>
-        <linearGradient id={`${id}-glass`} x1="0.2" y1="0" x2="0.9" y2="1">
-          <stop offset="0%" stopColor="#ead9b8" stopOpacity="0.22" />
-          <stop offset="42%" stopColor="#d8c49a" stopOpacity="0.08" />
-          <stop offset="100%" stopColor="#c4b089" stopOpacity="0.16" />
+        <linearGradient id={`${id}-shell`} x1="0.22" y1="0" x2="0.84" y2="1">
+          <stop offset="0%" stopColor="#f4ead4" stopOpacity="0.14" />
+          <stop offset="36%" stopColor="#d8c49a" stopOpacity="0.04" />
+          <stop offset="100%" stopColor="#3a2a1c" stopOpacity="0.12" />
         </linearGradient>
-        <linearGradient id={`${id}-whiskey`} x1="0.18" y1="0" x2="0.82" y2="1">
-          <stop offset="0%" stopColor="#8a4e18" stopOpacity="0.5" />
-          <stop offset="16%" stopColor="#6a3410" stopOpacity="0.72" />
-          <stop offset="46%" stopColor="#431c0a" stopOpacity="0.86" />
-          <stop offset="76%" stopColor="#271008" stopOpacity="0.93" />
-          <stop offset="100%" stopColor="#120706" stopOpacity="0.96" />
+        <linearGradient id={`${id}-wall-l`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#f7f1e4" stopOpacity="0.48" />
+          <stop offset="34%" stopColor="#ead9b8" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#120c08" stopOpacity="0.58" />
         </linearGradient>
-        <linearGradient id={`${id}-whiskey-side`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#d4a45a" stopOpacity="0.26" />
-          <stop offset="24%" stopColor="#8a4a18" stopOpacity="0.08" />
-          <stop offset="58%" stopColor="#2a1208" stopOpacity="0.16" />
-          <stop offset="100%" stopColor="#1a0c06" stopOpacity="0.3" />
+        <linearGradient id={`${id}-wall-r`} x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%" stopColor="#0c0806" stopOpacity="0.62" />
+          <stop offset="48%" stopColor="#ead9b8" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="#f4ead4" stopOpacity="0.28" />
         </linearGradient>
-        <radialGradient id={`${id}-surface`} cx="42%" cy="38%" r="62%">
-          <stop offset="0%" stopColor="#d4a45a" stopOpacity="0.48" />
-          <stop offset="38%" stopColor="#8a4e1c" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#3a1c0c" stopOpacity="0.1" />
+        <linearGradient id={`${id}-sham`} x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stopColor="#c47828" stopOpacity="0.28" />
+          <stop offset="28%" stopColor="#5a2a10" stopOpacity="0.22" />
+          <stop offset="62%" stopColor="#1a100c" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#0c0806" stopOpacity="0.7" />
+        </linearGradient>
+        <radialGradient id={`${id}-sham-glow`} cx="42%" cy="35%" r="70%">
+          <stop offset="0%" stopColor="#e8a43a" stopOpacity="0.42" />
+          <stop offset="46%" stopColor="#8a4010" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#120806" stopOpacity="0" />
         </radialGradient>
+        <linearGradient id={`${id}-whiskey`} x1="0.38" y1="0" x2="0.58" y2="1">
+          <stop offset="0%" stopColor="#f6d078" stopOpacity="0.55" />
+          <stop offset="7%" stopColor="#e8a230" stopOpacity="0.72" />
+          <stop offset="22%" stopColor="#d06a14" stopOpacity="0.84" />
+          <stop offset="48%" stopColor="#9a3c0c" stopOpacity="0.9" />
+          <stop offset="76%" stopColor="#4a1608" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#140806" stopOpacity="0.97" />
+        </linearGradient>
+        <linearGradient id={`${id}-whiskey-side`} x1="0" y1="0.15" x2="1" y2="0.85">
+          <stop offset="0%" stopColor="#fbe4a0" stopOpacity="0.42" />
+          <stop offset="18%" stopColor="#e09028" stopOpacity="0.08" />
+          <stop offset="62%" stopColor="#3a1208" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#0c0604" stopOpacity="0.44" />
+        </linearGradient>
+        <radialGradient id={`${id}-surface`} cx="34%" cy="32%" r="68%">
+          <stop offset="0%" stopColor="#ffe9a8" stopOpacity="0.88" />
+          <stop offset="22%" stopColor="#e8a43a" stopOpacity="0.52" />
+          <stop offset="58%" stopColor="#a84810" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#3a1408" stopOpacity="0.05" />
+        </radialGradient>
+        <radialGradient id={`${id}-caustic`} cx="46%" cy="28%" r="72%">
+          <stop offset="0%" stopColor="#f0c060" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#6a280c" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id={`${id}-ice-top`} cx="34%" cy="24%" r="72%">
+          <stop offset="0%" stopColor="#fff8ee" stopOpacity="0.7" />
+          <stop offset="42%" stopColor="#e8dcc4" stopOpacity="0.38" />
+          <stop offset="100%" stopColor="#c4a070" stopOpacity="0.16" />
+        </radialGradient>
+        <linearGradient id={`${id}-ice-side`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#f4ead4" stopOpacity="0.42" />
+          <stop offset="100%" stopColor="#c46818" stopOpacity="0.28" />
+        </linearGradient>
+        <linearGradient id={`${id}-ice-shade`} x1="0.1" y1="0" x2="0.4" y2="1">
+          <stop offset="0%" stopColor="#d2b07a" stopOpacity="0.26" />
+          <stop offset="100%" stopColor="#6a3010" stopOpacity="0.4" />
+        </linearGradient>
         <clipPath id={`${id}-bowl`} clipPathUnits="userSpaceOnUse">
-          <path d="M72 90H208L195.5 258H84.5Z" />
+          <path d="M80 62H280L266 186H94Z" />
         </clipPath>
       </defs>
 
-      <ellipse className="deal-glass-desk" cx="140" cy="318" rx="92" ry="14" fill="#1a1612" opacity="0.55" />
-      <ellipse className="deal-glass-desk" cx="140" cy="318" rx="92" ry="14" fill={`url(#${id}-hatch)`} opacity="0.35" />
-
       <g className="deal-glass-body">
         <path
-          d="M58 78H222L206 274C204 286 190 294 140 294C90 294 76 286 74 274Z"
-          fill={`url(#${id}-glass)`}
-          stroke="#0c0b09"
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-        <g clipPath={`url(#${id}-bowl)`} opacity="0.18">
-          <rect x="50" y="80" width="180" height="200" fill={`url(#${id}-hatch)`} />
-          <rect x="50" y="80" width="180" height="200" fill={`url(#${id}-stipple)`} />
-        </g>
-        <path
-          d="M70 92H210L198 258H82Z"
-          fill="none"
-          stroke="#0c0b09"
-          strokeWidth="0.8"
-          opacity="0.4"
+          d="M52 50H308L296 186L288 266C284 282 250 294 180 294C110 294 76 282 72 266L64 186Z"
+          fill={`url(#${id}-shell)`}
         />
 
-        <g className="deal-liquid" clipPath={`url(#${id}-bowl)`}>
+        <g clipPath={`url(#${id}-bowl)`}>
+          <path d="M80 62H280L266 186H94Z" fill="#0a0806" opacity="0.38" />
           <g className="deal-liquid-sway">
             <path
               className="deal-liquid-fill"
-              d="M18 176C48 158 232 158 262 176L248 292H32Z"
+              d="M18 136C54 118 306 118 342 136L326 220H34Z"
               fill={`url(#${id}-whiskey)`}
             />
             <path
               className="deal-liquid-fill"
-              d="M18 176C48 158 232 158 262 176L248 292H32Z"
+              d="M18 136C54 118 306 118 342 136L326 220H34Z"
               fill={`url(#${id}-whiskey-side)`}
+            />
+            <ellipse
+              className="deal-caustic"
+              cx="180"
+              cy="172"
+              rx="72"
+              ry="26"
+              fill={`url(#${id}-caustic)`}
             />
             <g className="deal-liquid-surface">
               <path
                 className="deal-liquid-meniscus"
-                d="M32 176C62 162 218 162 248 176C218 190 62 190 32 176Z"
+                d="M34 136C70 118 290 118 326 136C290 154 70 154 34 136Z"
                 fill={`url(#${id}-surface)`}
               />
               <path
-                d="M48 172C86 164 154 163 196 170"
-                stroke="#e8c888"
-                strokeWidth="3"
-                opacity="0.34"
+                d="M62 132C104 124 188 122 248 130"
+                stroke="#ffe9a8"
+                strokeWidth="3.2"
                 strokeLinecap="round"
+                opacity="0.62"
               />
               <path
-                d="M58 180C98 192 168 191 214 178"
-                stroke="#0c0b09"
-                strokeWidth="0.7"
-                opacity="0.22"
+                d="M70 142C118 152 208 151 268 140"
+                stroke="#4a1608"
+                strokeWidth="0.9"
+                opacity="0.32"
               />
-              <ellipse cx="92" cy="198" rx="2.2" ry="3.2" fill="#ead9b8" opacity="0.16" />
-              <ellipse cx="118" cy="214" rx="1.5" ry="2.2" fill="#ead9b8" opacity="0.12" />
+              <ellipse
+                className="deal-ripple deal-ripple-a"
+                cx="180"
+                cy="136"
+                rx="48"
+                ry="10"
+                stroke="#f6d078"
+                strokeWidth="1.4"
+                opacity="0"
+              />
+              <ellipse
+                className="deal-ripple deal-ripple-b"
+                cx="180"
+                cy="136"
+                rx="68"
+                ry="14"
+                stroke="#ead9b8"
+                strokeWidth="1.05"
+                opacity="0"
+              />
+              <ellipse
+                className="deal-ripple deal-ripple-c"
+                cx="180"
+                cy="136"
+                rx="88"
+                ry="18"
+                stroke="#c46818"
+                strokeWidth="0.85"
+                opacity="0"
+              />
             </g>
+            <IceChunk id={id} variant="a" />
+            <IceChunk id={id} variant="b" />
           </g>
         </g>
 
+        <path d="M52 50L80 62L94 186L64 186Z" fill={`url(#${id}-wall-l)`} />
+        <path d="M308 50L280 62L266 186L296 186Z" fill={`url(#${id}-wall-r)`} />
+
+        <path d="M64 186H296L288 266C284 282 250 294 180 294C110 294 76 282 72 266Z" fill={`url(#${id}-sham)`} />
+        <ellipse cx="180" cy="228" rx="96" ry="20" fill={`url(#${id}-sham-glow)`} />
+        <ellipse cx="180" cy="186" rx="116" ry="14" fill="#ead9b8" fillOpacity="0.08" stroke="#f4ead4" strokeWidth="1.1" opacity="0.35" />
+        <ellipse cx="180" cy="214" rx="104" ry="13" fill="none" stroke="#ead9b8" strokeWidth="1" opacity="0.22" />
+        <ellipse cx="180" cy="238" rx="92" ry="11" fill="none" stroke="#c4a574" strokeWidth="0.9" opacity="0.28" />
+        <ellipse cx="180" cy="258" rx="80" ry="9" fill="none" stroke="#ead9b8" strokeWidth="0.8" opacity="0.2" />
+        <ellipse cx="180" cy="278" rx="66" ry="8" fill="#0c0806" fillOpacity="0.35" stroke="#3a2a1c" strokeWidth="1.1" />
+        <path
+          d="M96 200C110 236 128 262 180 274C232 262 250 236 264 200"
+          stroke="#f4ead4"
+          strokeWidth="1.2"
+          opacity="0.12"
+        />
+
         <path
           className="deal-glass-shine"
-          d="M86 108C96 150 92 210 90 246"
-          stroke="#ead9b8"
-          strokeWidth="7"
-          opacity="0.2"
+          d="M96 78C108 128 102 168 100 186"
+          stroke="#f7f4ee"
+          strokeWidth="9"
           strokeLinecap="round"
+          opacity="0.28"
         />
         <path
           className="deal-highlight"
-          d="M92 100C96 148 94 210 92 248"
-          stroke="#f4ead4"
-          strokeWidth="4.5"
-          opacity="0.28"
+          d="M108 70C114 124 110 170 108 186"
+          stroke="#fffaf0"
+          strokeWidth="4.4"
           strokeLinecap="round"
-        />
-        <path
-          d="M188 112C180 168 184 220 190 250"
-          stroke="#0c0b09"
-          strokeWidth="1.1"
-          opacity="0.22"
+          opacity="0.42"
         />
         <path
           className="deal-glass-shine"
-          d="M176 118C184 168 182 214 178 248"
+          d="M252 82C244 132 250 172 256 186"
           stroke="#ead9b8"
-          strokeWidth="3.2"
-          opacity="0.14"
+          strokeWidth="4"
           strokeLinecap="round"
+          opacity="0.14"
+        />
+        <path
+          d="M268 88C260 140 266 172 270 186"
+          stroke="#0c0806"
+          strokeWidth="1.2"
+          opacity="0.22"
         />
 
-        <path d="M62 86H218" stroke="#0c0b09" strokeWidth="2" />
-        <path d="M68 78H212" stroke="#0c0b09" strokeWidth="1.6" />
-        <ellipse cx="140" cy="78" rx="72" ry="8" fill="#ead9b8" fillOpacity="0.28" stroke="#0c0b09" strokeWidth="1.5" />
-        <ellipse cx="140" cy="78" rx="58" ry="5" fill="none" stroke="#ead9b8" strokeWidth="1.1" opacity="0.45" />
-        <ellipse cx="140" cy="78" rx="48" ry="3.2" fill="none" stroke="#f4ead4" strokeWidth="0.7" opacity="0.35" />
-
-        <path d="M76 274H204" stroke="#0c0b09" strokeWidth="2.1" />
-        <path d="M84 282H196" stroke="#0c0b09" strokeWidth="1.4" />
-        <path d="M96 288H184" stroke="#0c0b09" strokeWidth="2.6" strokeLinecap="round" />
-        <path d="M108 268V288" stroke="#0c0b09" strokeWidth="0.7" opacity="0.45" />
-        <path d="M140 268V288" stroke="#0c0b09" strokeWidth="0.7" opacity="0.45" />
-        <path d="M172 268V288" stroke="#0c0b09" strokeWidth="0.7" opacity="0.45" />
+        <ellipse cx="180" cy="44" rx="128" ry="16" fill="#f4ead4" fillOpacity="0.16" />
+        <ellipse cx="180" cy="44" rx="128" ry="16" fill="none" stroke="#f8f4ea" strokeWidth="2.4" />
+        <ellipse cx="180" cy="52" rx="102" ry="11" fill="#0a0806" fillOpacity="0.16" stroke="#ead9b8" strokeWidth="1.35" opacity="0.55" />
+        <ellipse cx="180" cy="48" rx="70" ry="5.5" fill="none" stroke="#fffaf0" strokeWidth="1.35" opacity="0.55" />
       </g>
     </svg>
+  )
+}
+
+export function WhiskeyGlass() {
+  return (
+    <span className="deal-pour">
+      <span className="deal-glass-shadow" aria-hidden="true" />
+      <GlassArt />
+    </span>
   )
 }
 

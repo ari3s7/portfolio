@@ -2,6 +2,7 @@ import { education } from '@/data/education'
 
 export type ExperienceKind =
   | 'education'
+  | 'beginnings'
   | 'work'
   | 'project'
   | 'achievement'
@@ -25,7 +26,7 @@ export const experience: ExperienceItem[] = education.map((item) => ({
   id: item.id,
   year: item.years,
   title: item.credential,
-  kind: 'education',
+  kind: item.kind ?? 'education',
   summary: item.institution,
 }))
 

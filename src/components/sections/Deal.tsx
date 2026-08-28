@@ -15,6 +15,7 @@ export function Deal() {
   const { phase, offered, play } = useDealScene({
     glassRef,
     reducedMotion: prefersReducedMotion,
+    light: performanceTier === 'light',
   })
 
   useEffect(() => {
@@ -70,35 +71,6 @@ export function Deal() {
         <div className="deal-stage">
           <div className="deal-desk" aria-hidden="true" />
           <DealDeskProps />
-          <svg
-            className="deal-smoke"
-            viewBox="0 0 220 180"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              className="deal-wisp deal-wisp-a"
-              d="M108 170C96 132 124 118 112 78C102 48 128 32 118 8"
-              stroke="#ead9b8"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-            <path
-              className="deal-wisp deal-wisp-b"
-              d="M128 168C140 128 116 110 132 76C146 46 122 28 136 6"
-              stroke="#c4a574"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-            <path
-              className="deal-wisp deal-wisp-c"
-              d="M118 166C110 124 134 108 120 70"
-              stroke="#d2c19a"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-          </svg>
 
           <button
             type="button"
@@ -131,7 +103,9 @@ export function Deal() {
               </button>
             </>
           ) : (
-            <p className="deal-instruction">{copy.deal.instruction}</p>
+            <p className="deal-instruction">
+              {playing ? copy.deal.pouring : copy.deal.instruction}
+            </p>
           )}
         </div>
       </div>
