@@ -1,6 +1,5 @@
 import { Atmosphere } from '@/components/atmosphere/Atmosphere'
 import { ChamberSketch } from '@/components/atmosphere/ChamberSketch'
-import { SmokeField } from '@/components/atmosphere/SmokeField'
 import { DocumentMeta } from '@/components/chrome/DocumentMeta'
 import { InkCursor } from '@/components/chrome/InkCursor'
 import { WatchNav } from '@/components/chrome/WatchNav'
@@ -42,7 +41,6 @@ export default function App() {
             <ChamberSketch />
             <MatchScene />
             <Projects />
-            <SmokeField />
           </div>
           <Skills />
           <Experience />

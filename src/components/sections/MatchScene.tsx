@@ -8,7 +8,7 @@ import {
   type PointerEvent,
 } from 'react'
 import { gsap } from '@/animations/gsapSetup'
-import { Cigarette } from '@/components/objects/Cigarette'
+import { Cigarette, CigarettePlume } from '@/components/objects/Cigarette'
 import { Matchstick } from '@/components/objects/Matchstick'
 import { MatchStriker } from '@/components/objects/MatchStriker'
 import { copy } from '@/data'
@@ -88,7 +88,6 @@ export function MatchScene() {
       opacity: 1,
     })
     gsap.set(scene.querySelector('.cig-tip-fill'), { fill: '#8a3a1f' })
-    gsap.set(scene.querySelectorAll('.cig-smoke'), { opacity: 0 })
     gsap.set(match, { x: 0, y: 0, rotation: pointerMode === 'coarse' ? -2 : -8 })
   }, [pointerMode])
 
@@ -438,7 +437,9 @@ export function MatchScene() {
           <div className="match-cig-slot">
             <span className="cig-ashtray" aria-hidden="true" />
             <Cigarette />
-            <span ref={cigTipRef} className="cig-tip-hotspot" aria-hidden="true" />
+            <span ref={cigTipRef} className="cig-tip-hotspot" aria-hidden="true">
+              <CigarettePlume count={performanceTier === 'light' ? 5 : 8} />
+            </span>
             <span className="match-object-shadow match-cig-shadow" aria-hidden="true" />
           </div>
 

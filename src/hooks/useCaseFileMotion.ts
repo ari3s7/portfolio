@@ -48,7 +48,6 @@ export function useCaseFileMotion({
     }
 
     const cards = [...section.querySelectorAll<HTMLElement>('.case-file')]
-    const wisps = document.querySelectorAll<HTMLElement>('.smoke-wisps')
     const tweens: gsap.core.Tween[] = []
     const compact = window.innerWidth < 768
 
@@ -121,16 +120,6 @@ export function useCaseFileMotion({
         ease: 'sine.out',
       })
     })
-
-    if (wisps.length > 0) {
-      motion(wisps, {
-        x: openId ? 14 : 0,
-        y: openId ? -8 : 0,
-        scale: openId ? 1.06 : 1,
-        duration: 0.7,
-        ease: 'sine.out',
-      })
-    }
 
     return () => {
       window.removeEventListener('keydown', onKey)

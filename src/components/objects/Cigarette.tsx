@@ -122,27 +122,18 @@ export function Cigarette() {
           opacity="0.8"
         />
       </g>
-
-      <g className="cig-smoke" opacity="0" fill="none" stroke="#cbbfa8" strokeLinecap="round">
-        <path
-          className="cig-smoke-a"
-          d="M334 26C338 12 328 -2 340 -16C348 -26 338 -38 346 -52"
-          strokeWidth="1.35"
-          opacity="0.7"
-        />
-        <path
-          className="cig-smoke-b"
-          d="M328 24C318 8 330 -8 318 -24C310 -36 322 -46 312 -62"
-          strokeWidth="1.05"
-          opacity="0.5"
-        />
-        <path
-          className="cig-smoke-c"
-          d="M340 22C352 6 344 -12 356 -28"
-          strokeWidth="0.85"
-          opacity="0.4"
-        />
-      </g>
     </svg>
+  )
+}
+
+const PLUME_COUNT = 8
+
+export function CigarettePlume({ count = PLUME_COUNT }: { count?: number }) {
+  return (
+    <span className="cig-plume" aria-hidden="true">
+      {Array.from({ length: count }, (_, index) => (
+        <span key={index} className={`cig-wisp cig-wisp-${index + 1}`} />
+      ))}
+    </span>
   )
 }

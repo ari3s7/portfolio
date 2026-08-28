@@ -15,7 +15,6 @@
 }
 
 .chamber-sketch,
-.smoke-field,
 .projects-scene,
 .match-scene {
   grid-column: 1;
@@ -29,78 +28,6 @@
   pointer-events: none;
   mix-blend-mode: overlay;
   opacity: 0.55;
-}
-
-.smoke-field {
-  position: relative;
-  z-index: 3;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.smoke-canvas {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.smoke-wisps {
-  position: absolute;
-  inset: -8% -6% 18%;
-  width: auto;
-  height: auto;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-}
-
-.smoke-wisps-back {
-  z-index: 1;
-}
-
-.smoke-wisps-front {
-  z-index: 4;
-}
-
-.smoke-field.is-lit .smoke-wisps {
-  opacity: 1;
-}
-
-.projects-scene.is-light .smoke-wisps-back,
-.smoke-field.is-static .smoke-wisps-back {
-  opacity: 0.35;
-}
-
-.smoke-field.is-static .smoke-wisps {
-  opacity: 0.28;
-}
-
-.smoke-haze {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  opacity: 0;
-  background:
-    radial-gradient(ellipse 38% 42% at 52% 28%, rgb(12 10 8 / 0.14), transparent 64%),
-    radial-gradient(ellipse 58% 36% at 48% 18%, rgb(40 28 18 / 0.12), transparent 70%);
-  transition: opacity 700ms ease;
-}
-
-.smoke-field.is-lit .smoke-haze,
-.noir-continuation:has(.match-scene.is-lit) .smoke-haze,
-html[data-cigarette-lit='true'] .smoke-haze {
-  opacity: 1;
-}
-
-html[data-reduced-motion='true'] .smoke-haze {
-  opacity: 0.4;
-}
-
-html[data-performance-tier='light'] .smoke-wisps-front,
-html[data-performance-tier='light'] .smoke-wisps-back {
-  filter: none;
 }
 
 .projects-scene {
@@ -565,10 +492,6 @@ html:not([data-reduced-motion='true']) .projects-scene:not(.is-lit) {
   transform: scaleY(0.5);
 }
 
-html[data-file-open='true'] .smoke-wisps-front {
-  opacity: 0.72;
-}
-
 html[data-pointer-mode='fine'] .case-file-paper {
   transition: transform 180ms ease;
 }
@@ -634,8 +557,7 @@ html[data-reduced-motion='true'] .case-file:hover .case-file-paper {
   }
 }
 
-html[data-reduced-motion='true'] .case-file,
-html[data-reduced-motion='true'] .smoke-wisp {
+html[data-reduced-motion='true'] .case-file {
   opacity: 1;
   transform: none;
   filter: none;
@@ -652,17 +574,11 @@ html[data-reduced-motion='true'] .case-file.is-open .case-file-docket-inner {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .case-file,
-  .smoke-wisp {
+  .case-file {
     opacity: 1;
     transform: none;
     filter: none;
     clip-path: none;
-  }
-
-  .smoke-wisps {
-    filter: none;
-    opacity: 0.22;
   }
 
   .case-file-veil {
