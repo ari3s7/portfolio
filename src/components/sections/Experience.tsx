@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { PocketWatch } from '@/components/objects/PocketWatch'
 import { copy, experience } from '@/data'
 import { useWatchScene } from '@/hooks/useWatchScene'
@@ -17,7 +17,7 @@ export function Experience() {
     angle: angles[index] ?? 0,
   }))
 
-  useWatchScene({
+  const { opened, open } = useWatchScene({
     sectionRef,
     count: experience.length,
     reducedMotion: prefersReducedMotion,
@@ -30,12 +30,19 @@ export function Experience() {
     sectionRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' })
   }, [setActiveSection])
 
+  const onWatchKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    event.preventDefault()
+    open()
+  }
+
   return (
     <section
       ref={sectionRef}
       id="experience"
       className={cx(
         'watch-scene',
+        opened && 'is-open',
         performanceTier === 'light' && 'is-light',
         pointerMode === 'coarse' && 'is-touch',
       )}
@@ -55,11 +62,30 @@ export function Experience() {
 
         <div className="watch-layout">
           <div className="watch-stage">
-            <PocketWatch marks={marks} />
+            <button
+              type="button"
+              className="watch-trigger"
+              aria-label={copy.experience.open}
+              aria-expanded={opened}
+              aria-controls="education-log"
+              aria-pressed={opened}
+              tabIndex={opened ? -1 : 0}
+              onClick={open}
+              onKeyDown={onWatchKeyDown}
+            >
+              <PocketWatch marks={marks} />
+            </button>
+            {opened ? null : <p className="watch-hint">{copy.experience.hint}</p>}
           </div>
 
           {experience.length > 0 ? (
-            <ol className="watch-log" aria-label={copy.experience.heading}>
+            <ol
+              id="education-log"
+              className="watch-log"
+              aria-label={copy.experience.heading}
+              aria-hidden={!opened || undefined}
+              inert={!opened ? true : undefined}
+            >
               {experience.map((item) => (
                 <li key={item.id}>
                   <article className="watch-entry" data-entry={item.id}>
@@ -73,6 +99,10 @@ export function Experience() {
             </ol>
           ) : null}
         </div>
+
+        <p className="watch-status" aria-live="polite">
+          {opened ? copy.experience.opened : ''}
+        </p>
       </div>
     </section>
   )

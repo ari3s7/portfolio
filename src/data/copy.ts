@@ -35,6 +35,9 @@ export const copy = {
   experience: {
     kicker: 'THE HOURS',
     heading: 'EDUCATION',
+    hint: 'OPEN THE WATCH',
+    open: 'Open the pocket watch',
+    opened: 'Education records revealed',
     kinds: {
       education: 'EDUCATION',
       work: 'WORK',

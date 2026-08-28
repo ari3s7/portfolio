@@ -4,9 +4,9 @@ export const personal = {
   headline: 'Building scalable systems, real-time applications, and cloud infrastructure.',
   location: '',
   intro:
-    'Backend-focused Computer Science student with experience building scalable applications using TypeScript, Express.js, PostgreSQL, Redis, Docker, and Microsoft Azure. Passionate about backend engineering, distributed systems, cloud infrastructure, and scalable system design.',
+    'I am a Computer Science student who likes building the parts of an application people rarely see: the logic that stores their data, answers their requests, and keeps a live session from falling apart. That kind of work is what drew me to software in the first place.',
   identity:
-    'Backend-focused Computer Science student building scalable applications with TypeScript, Express.js, PostgreSQL, Redis, Docker, and Microsoft Azure.',
+    'I am backend-focused. The tools I reach for are TypeScript and Express.js, PostgreSQL for storage, Redis when something has to stay fast, and Docker with Microsoft Azure when a project needs a host that is not my laptop.',
   interests: [
     'Backend engineering',
     'Distributed systems',
@@ -14,7 +14,7 @@ export const personal = {
     'Scalable system design',
   ],
   focus:
-    'Building scalable systems, real-time applications, and cloud infrastructure.',
+    'Right now I am learning to model data more carefully, to treat authentication and caching as part of the design, and to take a local process all the way onto a machine I can keep running. I want each new project to be easier to operate than the last.',
   statement:
-    'Backend-focused Computer Science student with experience building scalable applications using TypeScript, Express.js, PostgreSQL, Redis, Docker, and Microsoft Azure. Passionate about backend engineering, distributed systems, cloud infrastructure, and scalable system design.',
+    'Curiosity is what pulls me into a problem. I would rather build something small that is useful and honest about its limits than a large system I cannot explain. I learn by making things: write, break, fix, and try to leave the next version a little more sound than the one before it.',
 } as const
