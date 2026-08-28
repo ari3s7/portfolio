@@ -57,7 +57,7 @@ export const copy = {
     github: 'GITHUB',
     linkedin: 'LINKEDIN',
     instruction: 'Break the seal.',
-    open: 'Open the sealed letter',
+    open: 'Open letter',
     opening: 'The seal breaks',
     closing:
       'Should you need a developer who enjoys building things that work, you know where to find me.',

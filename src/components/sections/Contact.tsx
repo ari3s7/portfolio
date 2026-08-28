@@ -30,8 +30,6 @@ export function Contact() {
     open()
   }
 
-  const sealed = !opened && !opening
-
   return (
     <section
       ref={sectionRef}
@@ -62,44 +60,46 @@ export function Contact() {
 
           <div className="letter-rig">
             <div className="letter-envelope">
-              <article
-                id="contact-letter"
-                className="letter-sheet"
-                aria-hidden={sealed ? true : undefined}
-                inert={sealed ? true : undefined}
-              >
-                <div className="letter-fiber" aria-hidden="true" />
-                <div className="letter-hatch" aria-hidden="true" />
-                <div className="letter-folds" aria-hidden="true" />
-                <p className="letter-closing letter-reveal">{copy.contact.closing}</p>
-
-                {channels.length > 0 ? (
-                  <nav className="letter-channels" aria-label={copy.contact.channels}>
-                    <ul>
-                      {channels.map((channel) => (
-                        <li key={channel.id} className="letter-reveal">
-                          <p className="letter-channel-label">{channel.label}</p>
-                          <a
-                            className="letter-link"
-                            href={channel.href}
-                            {...(channel.external
-                              ? { target: '_blank', rel: 'noreferrer noopener' }
-                              : {})}
-                          >
-                            {channel.text}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                ) : null}
-
-                <p className="letter-order letter-reveal">{copy.contact.order}</p>
-              </article>
-
               <div className="letter-body" aria-hidden="true">
                 <EnvelopeBodyArt />
                 <div className="letter-body-fiber" />
+              </div>
+
+              <div className="letter-mouth">
+                <article
+                  id="contact-letter"
+                  className="letter-sheet"
+                  aria-hidden={!opened ? true : undefined}
+                  inert={!opened ? true : undefined}
+                >
+                  <div className="letter-fiber" aria-hidden="true" />
+                  <div className="letter-hatch" aria-hidden="true" />
+                  <div className="letter-folds" aria-hidden="true" />
+                  <p className="letter-closing letter-reveal">{copy.contact.closing}</p>
+
+                  {channels.length > 0 ? (
+                    <nav className="letter-channels" aria-label={copy.contact.channels}>
+                      <ul>
+                        {channels.map((channel) => (
+                          <li key={channel.id} className="letter-reveal">
+                            <p className="letter-channel-label">{channel.label}</p>
+                            <a
+                              className="letter-link"
+                              href={channel.href}
+                              {...(channel.external
+                                ? { target: '_blank', rel: 'noreferrer noopener' }
+                                : {})}
+                            >
+                              {channel.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  ) : null}
+
+                  <p className="letter-order letter-reveal">{copy.contact.order}</p>
+                </article>
               </div>
 
               <div className="letter-front" aria-hidden="true">
@@ -107,23 +107,25 @@ export function Contact() {
                 <p className="letter-address">{copy.contact.heading}</p>
               </div>
 
-              <div className="letter-flap" aria-hidden="true">
-                <EnvelopeFlapArt />
+              <div className="letter-flap">
+                <div className="letter-flap-visual" aria-hidden="true">
+                  <EnvelopeFlapArt />
+                  <div className="letter-flap-back" />
+                </div>
+                <button
+                  type="button"
+                  className="letter-seal"
+                  aria-label={opening ? copy.contact.opening : copy.contact.open}
+                  aria-expanded={opened || opening}
+                  aria-controls="contact-letter"
+                  tabIndex={opened ? -1 : 0}
+                  disabled={opened || opening}
+                  onClick={open}
+                  onKeyDown={onSealKeyDown}
+                >
+                  <WaxSeal />
+                </button>
               </div>
-
-              <button
-                type="button"
-                className="letter-seal"
-                aria-label={opening ? copy.contact.opening : copy.contact.open}
-                aria-expanded={opened || opening}
-                aria-controls="contact-letter"
-                tabIndex={opened ? -1 : 0}
-                disabled={opened || opening}
-                onClick={open}
-                onKeyDown={onSealKeyDown}
-              >
-                <WaxSeal />
-              </button>
             </div>
           </div>
         </div>
