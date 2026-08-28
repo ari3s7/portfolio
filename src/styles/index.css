@@ -13,8 +13,16 @@
 @import "./contact.css";
 @import "./chrome.css";
 
+@font-face {
+  font-family: "Roman Wood Type JNL";
+  src: url("../assets/fonts/Roman Wood Type JNL.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-display: "Bodoni Moda", "Times New Roman", Didot, serif;
+  --font-display: "Roman Wood Type JNL", Georgia, serif;
   --font-label: "Bodoni Moda", "Times New Roman", Didot, serif;
   --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
 
@@ -77,8 +85,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
-    font-weight: 800;
+    font-weight: normal;
     letter-spacing: 0.06em;
     line-height: 1.04;
     text-transform: uppercase;
@@ -138,8 +145,7 @@
 @layer components {
   .letterpress {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
-    font-weight: 800;
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--color-cream);

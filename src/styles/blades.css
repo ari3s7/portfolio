@@ -86,7 +86,7 @@ html[data-has-entered='true'] .razor-blade:not(:disabled) {
   display: grid;
   height: 26%;
   place-items: center;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-optical-sizing: auto;
   font-size: 0.66rem;
   font-weight: 700;
