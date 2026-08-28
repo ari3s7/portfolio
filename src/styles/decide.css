@@ -1,0 +1,293 @@
+.decide-scene {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  min-height: 100svh;
+  padding: 3.8rem 0.85rem 4.4rem;
+  background: transparent;
+  scroll-margin-top: 0.5rem;
+}
+
+.decide-hatch,
+.decide-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.decide-hatch {
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background:
+    repeating-linear-gradient(
+      -24deg,
+      transparent 0 12px,
+      rgb(12 10 8 / 0.16) 12px 13px
+    ),
+    repeating-linear-gradient(
+      58deg,
+      transparent 0 16px,
+      rgb(12 10 8 / 0.08) 16px 17px
+    ),
+    radial-gradient(circle, rgb(12 10 8 / 0.5) 0.45px, transparent 0.7px);
+  background-size: auto, auto, 5px 5px;
+}
+
+.decide-vignette {
+  box-shadow: inset 0 0 8rem 1.8rem rgb(11 10 9 / 0.46);
+}
+
+.decide-well {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: min(100%, 40rem);
+  margin: 0 auto;
+}
+
+.decide-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: center;
+}
+
+.decide-kicker {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+}
+
+.decide-heading {
+  margin: 0;
+  color: var(--color-cream);
+  font-size: clamp(1.8rem, 6.4vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: 0.06em;
+}
+
+.decide-stakes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  margin: 0.55rem 0 0;
+  max-width: 22rem;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-brass) 78%, var(--color-cream));
+}
+
+.decide-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  perspective: 920px;
+  perspective-origin: 50% 46%;
+}
+
+.decide-trigger {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(72vw, 18.5rem);
+  height: min(72vw, 18.5rem);
+  min-width: 12.75rem;
+  min-height: 12.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transform-style: preserve-3d;
+}
+
+.decide-trigger:disabled {
+  cursor: default;
+}
+
+.decide-trigger:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgb(12 10 8 / 0.92);
+}
+
+.decide-shadow {
+  position: absolute;
+  right: 16%;
+  bottom: 2%;
+  left: 16%;
+  z-index: 0;
+  height: 1.35rem;
+  background: repeating-linear-gradient(
+    -24deg,
+    rgb(12 10 8 / 0.5) 0 1px,
+    transparent 1px 5px
+  );
+  clip-path: ellipse(48% 70% at 50% 50%);
+  transform: scaleY(0.5);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.decide-lift {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 86%;
+  height: 86%;
+  transform-style: preserve-3d;
+}
+
+.decide-coin {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+}
+
+.decide-scene.is-tossing .decide-coin,
+.decide-scene.is-tossing .decide-lift {
+  will-change: transform;
+}
+
+.decide-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgb(12 10 8 / 0.55),
+    0 10px 18px rgb(8 6 4 / 0.35);
+}
+
+.decide-face-tails {
+  transform: rotateY(180deg);
+}
+
+.decide-coin-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.decide-coin-label {
+  font-family: var(--font-label);
+}
+
+.decide-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 4.2rem;
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.decide-instruction {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+}
+
+.decide-result-lead {
+  margin: 0;
+  color: var(--color-cream);
+  font-size: clamp(1.15rem, 3.8vw, 1.7rem);
+  line-height: 1.12;
+  letter-spacing: 0.06em;
+}
+
+.decide-result-aside {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-brass) 80%, var(--color-cream));
+}
+
+.decide-scene.is-light .decide-hatch,
+.decide-scene.is-light .decide-shadow {
+  opacity: 0.08;
+}
+
+@media (min-width: 768px) {
+  .decide-scene {
+    padding: 4.8rem 1.4rem 5.2rem;
+  }
+
+  .decide-well {
+    gap: 1.9rem;
+    width: min(100%, 44rem);
+  }
+
+  .decide-trigger {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .decide-scene {
+    padding: 5.4rem 2rem 5.8rem;
+  }
+
+  .decide-well {
+    width: min(100%, 46rem);
+    gap: 2.1rem;
+  }
+
+  .decide-trigger {
+    width: 21.5rem;
+    height: 21.5rem;
+  }
+}
+
+@media (max-width: 374px) {
+  .decide-scene {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .decide-trigger {
+    width: min(86vw, 15.5rem);
+    height: min(86vw, 15.5rem);
+    min-width: 11.5rem;
+    min-height: 11.5rem;
+  }
+}
+
+html[data-reduced-motion='true'] .decide-coin,
+html[data-reduced-motion='true'] .decide-shadow {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decide-coin,
+  .decide-shadow {
+    transition: none;
+  }
+}

@@ -6,9 +6,10 @@
   padding: 0.55rem 0.8rem;
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-label);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
   transform: translateY(-140%);
@@ -81,8 +82,9 @@
   border: 0;
   background: transparent;
   color: var(--color-ink);
-  font-family: var(--font-label);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: left;
@@ -133,8 +135,9 @@
   border: 1px solid rgb(12 10 8 / 0.7);
   background: #d4c4a4;
   color: var(--color-ink);
-  font-family: var(--font-label);
+  font-family: var(--font-sans);
   font-size: 0.62rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;

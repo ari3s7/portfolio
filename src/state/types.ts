@@ -3,6 +3,8 @@ export const SECTION_IDS = [
   'projects',
   'skills',
   'experience',
+  'decide',
+  'deal',
   'contact',
 ] as const
 

@@ -78,7 +78,7 @@ html[data-performance-tier='light'] .world-halftone {
 }
 
 .ink-heading {
-  color: var(--color-paper);
+  color: var(--color-cream);
 }
 
 .noir-continuation,
@@ -86,6 +86,8 @@ html[data-performance-tier='light'] .world-halftone {
 .smoke-chamber,
 .skills-scene,
 .watch-scene,
+.decide-scene,
+.deal-scene,
 .finale-scene {
   background-color: transparent;
 }

@@ -190,8 +190,10 @@
   max-width: 100%;
   color: var(--color-ink);
   font-size: clamp(1.55rem, 8vw, 4.35rem);
-  line-height: 1.04;
-  letter-spacing: 0.03em;
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  font-optical-sizing: auto;
+  font-synthesis: none;
   text-shadow:
     0 1px 0 rgb(232 220 198 / 0.45),
     0.6px 0.8px 0 rgb(90 70 48 / 0.28);
@@ -351,11 +353,13 @@
 .newspaper-statement-label {
   margin-bottom: 0.35rem;
   font-family: var(--font-display);
-  font-weight: 900;
+  font-optical-sizing: auto;
+  font-weight: 800;
   font-size: clamp(0.95rem, 3.2vw, 1.2rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
+  font-synthesis: none;
 }
 
 .newspaper-footer {

@@ -5,6 +5,8 @@ import { DocumentMeta } from '@/components/chrome/DocumentMeta'
 import { InkCursor } from '@/components/chrome/InkCursor'
 import { WatchNav } from '@/components/chrome/WatchNav'
 import { Contact } from '@/components/sections/Contact'
+import { Deal } from '@/components/sections/Deal'
+import { Decide } from '@/components/sections/Decide'
 import { Experience } from '@/components/sections/Experience'
 import { MatchScene } from '@/components/sections/MatchScene'
 import { Newspaper } from '@/components/sections/Newspaper'
@@ -44,6 +46,8 @@ export default function App() {
           </div>
           <Skills />
           <Experience />
+          <Decide />
+          <Deal />
           <Contact />
         </div>
       </main>

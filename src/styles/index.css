@@ -8,12 +8,14 @@
 @import "./projects.css";
 @import "./skills.css";
 @import "./experience.css";
+@import "./decide.css";
+@import "./deal.css";
 @import "./contact.css";
 @import "./chrome.css";
 
 @theme {
-  --font-display: "Playfair Display", "Times New Roman", serif;
-  --font-label: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Bodoni Moda", "Times New Roman", Didot, serif;
+  --font-label: "Bodoni Moda", "Times New Roman", Didot, serif;
   --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
 
   --color-near-black: #120e0a;
@@ -54,7 +56,7 @@
     font-size: 1.0625rem;
     font-weight: 400;
     line-height: 1.55;
-    color: var(--color-cream);
+    color: color-mix(in srgb, var(--color-cream) 70%, var(--color-brown));
     background: var(--color-wood);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -75,11 +77,13 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    line-height: 1.06;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.04;
     text-transform: uppercase;
-    color: var(--color-paper);
+    color: var(--color-cream);
+    font-synthesis: none;
   }
 
   p {
@@ -115,6 +119,10 @@
   #skills:focus-visible,
   #experience:focus,
   #experience:focus-visible,
+  #decide:focus,
+  #decide:focus-visible,
+  #deal:focus,
+  #deal:focus-visible,
   #contact:focus,
   #contact:focus-visible {
     outline: none;
@@ -130,10 +138,12 @@
 @layer components {
   .letterpress {
     font-family: var(--font-display);
-    font-weight: 900;
+    font-optical-sizing: auto;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--color-paper);
+    letter-spacing: 0.06em;
+    color: var(--color-cream);
+    font-synthesis: none;
     text-shadow:
       0 1px 0 rgb(8 6 4 / 0.55),
       0.4px 0.7px 0 rgb(40 30 20 / 0.28);
@@ -150,9 +160,10 @@
     border: 1px solid rgb(12 10 8 / 0.7);
     background: color-mix(in srgb, var(--color-charcoal) 80%, transparent);
     color: var(--color-cream);
-    font-family: var(--font-label);
+    font-family: var(--font-sans);
     font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     cursor: pointer;
     transition:
@@ -215,4 +226,23 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.hero-kicker,
+.hero-hint,
+.hero-name,
+.hero-role,
+.match-kicker,
+.newspaper-kicker,
+.newspaper-edition,
+.projects-kicker,
+.case-file-kicker,
+.skills-kicker,
+.watch-kicker,
+.decide-kicker,
+.deal-kicker,
+.letter-kicker {
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-synthesis: none;
 }

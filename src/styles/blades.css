@@ -87,10 +87,12 @@ html[data-has-entered='true'] .razor-blade:not(:disabled) {
   height: 26%;
   place-items: center;
   font-family: var(--font-display);
+  font-optical-sizing: auto;
   font-size: 0.66rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  font-synthesis: none;
   text-transform: uppercase;
   color: rgb(22 18 14 / 0.82);
   pointer-events: none;

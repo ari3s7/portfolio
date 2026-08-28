@@ -430,7 +430,7 @@
   font-size: clamp(0.58rem, 2.2vw, 0.68rem);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-paper);
+  color: var(--color-cream);
 }
 
 .hero-enter {
@@ -438,6 +438,7 @@
   max-width: 100%;
   font-size: clamp(1.55rem, 7.4vw, 2.55rem);
   line-height: 1.02;
+  letter-spacing: 0.07em;
   overflow-wrap: anywhere;
 }
 

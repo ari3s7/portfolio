@@ -5,7 +5,7 @@
   max-width: 100%;
   overflow-x: clip;
   min-height: 100svh;
-  padding: 3.4rem 0.85rem 4.2rem;
+  padding: 3.4rem 0.85rem 4.4rem;
   background: transparent;
   scroll-margin-top: 0.5rem;
 }
@@ -42,54 +42,38 @@
 .finale-well {
   position: relative;
   z-index: 1;
-  width: min(100%, 74rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  width: min(100%, 42rem);
   margin: 0 auto;
 }
 
-.finale-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.4rem;
+.letter-head {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-.finale-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  max-width: 32rem;
-}
-
-.finale-head {
-  display: flex;
-  flex-direction: column;
   gap: 0.35rem;
+  text-align: center;
 }
 
-.finale-kicker {
+.letter-kicker {
   font-family: var(--font-label);
   font-size: 0.7rem;
   letter-spacing: 0.32em;
   color: var(--color-accent);
 }
 
-.finale-heading {
+.letter-heading {
   margin: 0;
-  color: var(--color-paper);
+  color: var(--color-cream);
   font-size: clamp(1.8rem, 6.4vw, 3.2rem);
-  line-height: 1.06;
+  line-height: 1.02;
+  letter-spacing: 0.06em;
 }
 
-.finale-tagline {
-  margin: 0;
-  max-width: 18ch;
-  color: var(--color-paper);
-  font-size: clamp(1.35rem, 4.6vw, 2.15rem);
-  line-height: 1.05;
-}
-
-.finale-place {
+.letter-instruction {
   margin: 0;
   font-family: var(--font-label);
   font-size: 0.72rem;
@@ -98,11 +82,253 @@
   color: var(--color-brass);
 }
 
-.finale-channels {
+.letter-stage {
+  position: relative;
+  display: grid;
+  place-items: start center;
   width: 100%;
 }
 
-.finale-channels ul {
+.letter-desk {
+  position: absolute;
+  right: 8%;
+  bottom: 2%;
+  left: 8%;
+  height: 2.4rem;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 16px,
+      rgb(90 70 48 / 0.18) 16px 17px
+    ),
+    radial-gradient(ellipse at 50% 40%, rgb(28 22 16 / 0.78), transparent 70%);
+  clip-path: ellipse(48% 70% at 50% 50%);
+}
+
+.letter-rig {
+  position: relative;
+  width: min(100%, 26rem);
+  padding-top: 0;
+}
+
+.finale-scene.is-open .letter-rig,
+.finale-scene.is-opening .letter-rig {
+  padding-top: 42%;
+}
+
+.letter-envelope {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.68 / 1;
+  overflow: visible;
+}
+
+.letter-body,
+.letter-front,
+.letter-flap,
+.letter-sheet,
+.letter-seal {
+  position: absolute;
+}
+
+.letter-body {
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  color: var(--color-ink);
+  box-shadow: 4px 8px 0 rgb(12 10 8 / 0.22);
+}
+
+.finale-scene.is-open .letter-body {
+  opacity: 0;
+}
+
+.letter-front {
+  right: 0.5%;
+  bottom: 0.8%;
+  left: 0.5%;
+  z-index: 3;
+  height: 30%;
+  overflow: hidden;
+  background: transparent;
+  clip-path: polygon(0.5% 10%, 4% 2%, 96% 2%, 99.5% 10%, 99.2% 100%, 0.8% 100%);
+}
+
+.finale-scene.is-open .letter-front,
+.finale-scene.is-opening .letter-front {
+  z-index: 4;
+  background:
+    radial-gradient(circle at 20% 20%, rgb(242 230 206 / 0.28), transparent 48%),
+    linear-gradient(180deg, #dcc8a2 0%, #cbb892 100%);
+  box-shadow: 0 -1px 0 rgb(12 10 8 / 0.28);
+}
+
+.letter-body-art,
+.letter-flap-art,
+.letter-body-fiber,
+.letter-front-fiber,
+.letter-fiber,
+.letter-hatch,
+.letter-folds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.letter-body-art,
+.letter-flap-art {
+  width: 100%;
+  height: 100%;
+}
+
+.letter-body-fiber,
+.letter-front-fiber,
+.letter-fiber {
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 14px,
+      rgb(90 70 48 / 0.16) 14px 15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 11px,
+      rgb(90 70 48 / 0.08) 11px 12px
+    );
+}
+
+.letter-hatch {
+  opacity: 0.1;
+  background:
+    repeating-linear-gradient(
+      -28deg,
+      transparent 0 7px,
+      rgb(12 10 8 / 0.22) 7px 8px
+    ),
+    repeating-linear-gradient(
+      38deg,
+      transparent 0 11px,
+      rgb(12 10 8 / 0.08) 11px 12px
+    );
+}
+
+.letter-folds {
+  background:
+    linear-gradient(180deg, rgb(12 10 8 / 0.1), transparent 10%),
+    linear-gradient(90deg, transparent 47%, rgb(12 10 8 / 0.1) 50%, transparent 53%);
+}
+
+.letter-address {
+  position: absolute;
+  right: 0;
+  bottom: 11%;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #3a3228;
+}
+
+.letter-flap {
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  height: 68%;
+  transform-origin: 50% 0%;
+  filter: drop-shadow(0 5px 0 rgb(12 10 8 / 0.28)) drop-shadow(3px 8px 0 rgb(12 10 8 / 0.12));
+}
+
+.finale-scene.is-opening .letter-flap {
+  z-index: 4;
+}
+
+.finale-scene.is-open .letter-flap {
+  z-index: 1;
+  transform: scaleY(-1);
+}
+
+.letter-sheet {
+  top: 8%;
+  right: 5%;
+  left: 5%;
+  z-index: 1;
+  min-height: 132%;
+  padding: 1.15rem 1.05rem 1.3rem;
+  overflow: hidden;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at 18% 10%, rgb(242 230 206 / 0.55), transparent 42%),
+    radial-gradient(circle at 86% 88%, rgb(90 70 48 / 0.12), transparent 36%),
+    linear-gradient(180deg, #efe0c4 0%, #d8c49a 100%);
+  clip-path: polygon(
+    0.6% 0.8%,
+    2.4% 0.2%,
+    50% 0.6%,
+    97.4% 0.2%,
+    99.4% 1.4%,
+    99.2% 98.4%,
+    97% 99.6%,
+    50% 99.2%,
+    2.8% 99.7%,
+    0.5% 98.2%
+  );
+  box-shadow:
+    3px 6px 0 rgb(12 10 8 / 0.18),
+    0 1px 0 rgb(234 217 184 / 0.28) inset;
+  transform: translateY(10%);
+  opacity: 0;
+}
+
+.finale-scene.is-open .letter-sheet,
+.finale-scene.is-opening .letter-sheet {
+  z-index: 3;
+  overflow: visible;
+  visibility: visible;
+}
+
+.finale-scene.is-open .letter-sheet {
+  transform: translateY(-52%);
+  opacity: 1;
+}
+
+.finale-scene:not(.is-open):not(.is-opening) .letter-sheet {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.letter-reveal {
+  opacity: 0;
+}
+
+.finale-scene.is-open .letter-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.letter-closing {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.letter-channels {
+  position: relative;
+  z-index: 1;
+}
+
+.letter-channels ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -110,131 +336,165 @@
   gap: 0.7rem;
 }
 
-.finale-channel-label {
+.letter-channel-label {
   margin: 0;
   font-family: var(--font-label);
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-brass);
+  color: var(--color-accent);
 }
 
-.finale-link {
+.letter-link {
   position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0.15rem 0 0.25rem;
-  color: var(--color-paper);
-  font-family: var(--font-label);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: none;
+  padding: 0.1rem 0 0.2rem;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 
-.finale-link::after {
+.letter-link::after {
   content: '';
   position: absolute;
   right: 0;
-  bottom: 0.45rem;
+  bottom: 0.4rem;
   left: 0;
   height: 1px;
-  background: var(--color-brass);
-  transform: scaleX(0.28);
+  background: var(--color-accent);
+  transform: scaleX(0.35);
   transform-origin: left center;
-  opacity: 0.55;
-  transition: transform 0.28s ease, opacity 0.28s ease;
 }
 
-.finale-link:hover::after,
-.finale-link:focus-visible::after,
-.finale-link:active::after {
+.letter-link:hover::after,
+.letter-link:focus-visible::after,
+.letter-link:active::after,
+.finale-scene.is-touch .letter-link::after {
   transform: scaleX(1);
-  opacity: 1;
 }
 
-.finale-link:focus-visible {
-  outline: 2px solid var(--color-cream);
+.letter-link:focus-visible {
+  outline: 2px solid var(--color-ink);
   outline-offset: 4px;
 }
 
-.finale-sign {
-  margin: 0;
+.letter-order {
+  position: relative;
+  z-index: 1;
+  margin: 1.3rem 0 0;
   font-family: var(--font-label);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-paper);
+  color: #3a3228;
 }
 
-.finale-art {
-  width: min(100%, 42rem);
-  justify-self: center;
+.letter-seal {
+  top: 64%;
+  left: 50%;
+  z-index: 5;
+  width: 23%;
+  min-width: 4.75rem;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  translate: -50% -50%;
+  cursor: pointer;
+  touch-action: manipulation;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.finale-silhouette {
+.letter-seal:disabled {
+  cursor: default;
+  opacity: 1;
+  color: inherit;
+}
+
+.finale-scene.is-open .letter-seal {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.letter-seal:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgb(12 10 8 / 0.92);
+}
+
+.letter-seal-art {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow: visible;
+  filter: drop-shadow(2px 5px 0 rgb(12 10 8 / 0.38));
+}
+
+.letter-seal-mark {
+  font-family: var(--font-label);
+}
+
+.letter-seal-left,
+.letter-seal-right,
+.letter-seal-join,
+.letter-seal-face {
+  transform-box: fill-box;
+}
+
+.letter-seal-left {
+  transform-origin: 88% 58%;
+}
+
+.letter-seal-right {
+  transform-origin: 12% 58%;
+}
+
+.letter-seal-face {
+  transform-origin: 50% 50%;
 }
 
 .finale-scene.is-light .finale-hatch {
   opacity: 0.08;
 }
 
-.finale-scene.is-light .finale-wisp {
-  opacity: 0.16;
-}
-
 @media (min-width: 768px) {
   .finale-scene {
-    padding: 4.4rem 1.4rem 5rem;
+    padding: 4.6rem 1.4rem 5.2rem;
   }
 
-  .finale-layout {
-    gap: 1.8rem;
+  .letter-rig {
+    width: min(100%, 30rem);
   }
 
-  .finale-art {
-    width: min(100%, 46rem);
+  .letter-sheet {
+    padding: 1.35rem 1.3rem 1.5rem;
+  }
+
+  .letter-closing {
+    font-size: 1.08rem;
   }
 }
 
 @media (min-width: 1024px) {
   .finale-scene {
-    padding: 5rem 2rem 5.4rem;
+    padding: 5rem 2rem 5.6rem;
   }
 
   .finale-well {
-    width: min(100%, 76rem);
-  }
-
-  .finale-layout {
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-    gap: 2.2rem;
-    min-height: 72svh;
-  }
-
-  .finale-copy {
-    justify-self: start;
-  }
-
-  .finale-art {
     width: min(100%, 48rem);
-    justify-self: end;
-  }
-}
-
-@media (min-width: 1440px) {
-  .finale-well {
-    width: min(100%, 78rem);
   }
 
-  .finale-art {
-    width: min(100%, 52rem);
+  .letter-rig {
+    width: 32rem;
   }
 }
 
@@ -243,28 +503,38 @@
     padding-left: 0.65rem;
     padding-right: 0.65rem;
   }
+
+  .letter-seal {
+    min-width: 4.5rem;
+  }
+
+  .letter-sheet {
+    padding: 1rem 0.85rem 1.15rem;
+  }
+
+  .letter-closing {
+    font-size: 0.98rem;
+  }
 }
 
-html[data-reduced-motion='true'] .finale-art,
-html[data-reduced-motion='true'] .finale-copy,
-html[data-reduced-motion='true'] .finale-wisp {
+html[data-reduced-motion='true'] .finale-scene.is-open .letter-sheet,
+html[data-reduced-motion='true'] .letter-reveal {
   opacity: 1;
-  transform: none;
 }
 
-html[data-reduced-motion='true'] .finale-link::after {
+html[data-reduced-motion='true'] .letter-link::after {
   transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .finale-art,
-  .finale-copy,
-  .finale-wisp {
-    opacity: 1;
-    transform: none;
+  .letter-sheet,
+  .letter-reveal,
+  .letter-flap,
+  .letter-seal-art {
+    transition: none;
   }
 
-  .finale-link::after {
+  .letter-link::after {
     transition: none;
   }
 }

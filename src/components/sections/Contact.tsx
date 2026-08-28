@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
-import { FinaleSilhouette } from '@/components/objects/FinaleSilhouette'
-import { copy, personal, socials } from '@/data'
+import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { EnvelopeBodyArt, EnvelopeFlapArt } from '@/components/objects/LetterEnvelope'
+import { WaxSeal } from '@/components/objects/WaxSeal'
+import { copy, socials } from '@/data'
 import { useContactScene } from '@/hooks/useContactScene'
-import { contactChannels, visiblePlace } from '@/lib/contactChannels'
+import { contactChannels } from '@/lib/contactChannels'
 import { cx } from '@/lib/cx'
 import { useExperience } from '@/state/useExperience'
 
@@ -11,12 +12,10 @@ export function Contact() {
   const { prefersReducedMotion, performanceTier, pointerMode, setActiveSection } =
     useExperience()
   const channels = contactChannels(socials)
-  const place = visiblePlace(personal.location)
 
-  useContactScene({
+  const { opened, opening, open } = useContactScene({
     sectionRef,
     reducedMotion: prefersReducedMotion,
-    light: performanceTier === 'light',
   })
 
   useEffect(() => {
@@ -25,12 +24,22 @@ export function Contact() {
     sectionRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' })
   }, [setActiveSection])
 
+  const onSealKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    event.preventDefault()
+    open()
+  }
+
+  const sealed = !opened && !opening
+
   return (
     <section
       ref={sectionRef}
       id="contact"
       className={cx(
         'finale-scene',
+        opened && 'is-open',
+        opening && 'is-opening',
         performanceTier === 'light' && 'is-light',
         pointerMode === 'coarse' && 'is-touch',
       )}
@@ -41,47 +50,87 @@ export function Contact() {
       <div className="finale-vignette" aria-hidden="true" />
 
       <div className="finale-well">
-        <div className="finale-layout">
-          <div className="finale-copy">
-            <header className="finale-head">
-              <p className="finale-kicker">{copy.contact.kicker}</p>
-              <h2 id="contact-heading" className="finale-heading letterpress">
-                {copy.contact.heading}
-              </h2>
-            </header>
+        <header className="letter-head">
+          <p className="letter-kicker">{copy.contact.kicker}</p>
+          <h2 id="contact-heading" className="letter-heading letterpress">
+            {copy.contact.heading}
+          </h2>
+        </header>
 
-            <p className="finale-tagline letterpress">{copy.contactTagline}</p>
+        <div className="letter-stage">
+          <div className="letter-desk" aria-hidden="true" />
 
-            {place ? <p className="finale-place">{place}</p> : null}
+          <div className="letter-rig">
+            <div className="letter-envelope">
+              <article
+                id="contact-letter"
+                className="letter-sheet"
+                aria-hidden={sealed ? true : undefined}
+                inert={sealed ? true : undefined}
+              >
+                <div className="letter-fiber" aria-hidden="true" />
+                <div className="letter-hatch" aria-hidden="true" />
+                <div className="letter-folds" aria-hidden="true" />
+                <p className="letter-closing letter-reveal">{copy.contact.closing}</p>
 
-            <p className="finale-sign">{personal.name}</p>
+                {channels.length > 0 ? (
+                  <nav className="letter-channels" aria-label={copy.contact.channels}>
+                    <ul>
+                      {channels.map((channel) => (
+                        <li key={channel.id} className="letter-reveal">
+                          <p className="letter-channel-label">{channel.label}</p>
+                          <a
+                            className="letter-link"
+                            href={channel.href}
+                            {...(channel.external
+                              ? { target: '_blank', rel: 'noreferrer noopener' }
+                              : {})}
+                          >
+                            {channel.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                ) : null}
 
-            {channels.length > 0 ? (
-              <nav className="finale-channels" aria-label={copy.contact.channels}>
-                <ul>
-                  {channels.map((channel) => (
-                    <li key={channel.id}>
-                      <p className="finale-channel-label">{channel.label}</p>
-                      <a
-                        className="finale-link"
-                        href={channel.href}
-                        {...(channel.external
-                          ? { target: '_blank', rel: 'noreferrer noopener' }
-                          : {})}
-                      >
-                        {channel.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ) : null}
-          </div>
+                <p className="letter-order letter-reveal">{copy.contact.order}</p>
+              </article>
 
-          <div className="finale-art">
-            <FinaleSilhouette />
+              <div className="letter-body" aria-hidden="true">
+                <EnvelopeBodyArt />
+                <div className="letter-body-fiber" />
+              </div>
+
+              <div className="letter-front" aria-hidden="true">
+                <div className="letter-front-fiber" />
+                <p className="letter-address">{copy.contact.heading}</p>
+              </div>
+
+              <div className="letter-flap" aria-hidden="true">
+                <EnvelopeFlapArt />
+              </div>
+
+              <button
+                type="button"
+                className="letter-seal"
+                aria-label={opening ? copy.contact.opening : copy.contact.open}
+                aria-expanded={opened || opening}
+                aria-controls="contact-letter"
+                tabIndex={opened ? -1 : 0}
+                disabled={opened || opening}
+                onClick={open}
+                onKeyDown={onSealKeyDown}
+              >
+                <WaxSeal />
+              </button>
+            </div>
           </div>
         </div>
+
+        <p className="letter-instruction" hidden={opened || opening}>
+          {copy.contact.instruction}
+        </p>
       </div>
     </section>
   )
